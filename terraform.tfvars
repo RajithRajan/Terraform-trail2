@@ -4,7 +4,7 @@ vpc_cidr = "10.0.0.0/16"
 # EC2 Variables
 instance_type          = "t2.micro"
 private_instance_count = 1
-ec2_iam_role           = "EC2-role"
+#ec2_iam_role           = "EC2-role"
 
 #EKS variable
 #eks_instance_type      = "m5.large"

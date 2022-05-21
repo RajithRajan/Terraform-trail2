@@ -39,10 +39,10 @@ variable "private_instance_count" {
   type        = number
 }
 
-variable "ec2_iam_role" {
-  description = "IAM role for the EC2 instance"
-  type        = string
-}
+# variable "ec2_iam_role" {
+#   description = "IAM role for the EC2 instance"
+#   type        = string
+# }
 
 #############################################################
 ## EKS variables
