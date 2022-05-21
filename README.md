@@ -26,6 +26,10 @@ eg
 
 - Kubeconfig would be downloaded so its ready to run kubectl against EKS    
 
+- Before terminating the cluster clean up the services or ingress created so that the associated loadbalance are deleted.
+- execute
+    `Terraform destroy`    This command will delete all the AWS resources created by apply command
+
 ## Resources created by this script
 - VPC spaning two AZs
 - Public subnet

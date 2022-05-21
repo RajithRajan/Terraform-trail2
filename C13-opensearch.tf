@@ -1,6 +1,6 @@
 #############################################################################################
 ##Just copy pasted yet to modify
 #############################################################################################
-data "aws_opensearch_domain" "my_domain" {
-  domain_name = "my-domain-name"
-}
+# data "aws_opensearch_domain" "my_domain" {
+#   domain_name = "my-domain-name"
+# }
