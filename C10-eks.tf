@@ -72,14 +72,14 @@ module "eks" {
     default_node_group = {
       # By default, the module creates a launch template to ensure tags are propagated to instances, etc.,
       # so we need to disable it to use the default template provided by the AWS EKS managed node group service
-      create_launch_template = false
-      launch_template_name   = ""
+      create_launch_template          = false
+      launch_template_name            = ""
       launch_template_use_name_prefix = true
 
-      disk_size = var.eks_node_disk_sz
+      disk_size    = var.eks_node_disk_sz
       min_size     = 1
       max_size     = 5
-      desired_size = 3      
+      desired_size = 3
 
       # Remote access cannot be specified with a launch template
       remote_access = {

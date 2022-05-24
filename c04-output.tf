@@ -1,6 +1,8 @@
 # Terraform Output Values
 
+####################################################
 ## VPC Output variables
+####################################################
 
 output "vpc_id" {
   description = "The ID of the VPC"
@@ -132,7 +134,9 @@ output "database_subnet_group_name" {
   value       = module.vpc.database_subnet_group_name
 }
 
+####################################################
 ## Security group variables
+####################################################
 
 output "private-sg_security_group_id" {
   description = "The ID of the security group"
@@ -164,7 +168,9 @@ output "public-sgsecurity_group_description" {
   value       = module.public-sg.security_group_description
 }
 
+####################################################
 ## EC2 Variables
+####################################################
 
 output "ec2_private_id" {
   description = "The ID of the instance"
@@ -186,8 +192,9 @@ output "ec2_private_private_dns" {
   value       = module.ec2_private[*].private_dns
 }
 
-
+####################################################
 ## ALB variables
+####################################################
 
 output "lb_id" {
   description = "The ID and ARN of the load balancer we created."
@@ -254,7 +261,9 @@ output "target_group_attachments" {
   value       = module.alb.target_group_attachments
 }
 
+####################################################
 ## EKS Variables
+####################################################
 
 output "cluster_id" {
   description = "EKS cluster ID."
@@ -284,4 +293,17 @@ output "cluster_security_group_id" {
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = module.eks.cluster_id
+}
+
+####################################################
+### MSK Output
+####################################################
+
+output "zookeeper_connect_string" {
+  value = aws_msk_cluster.kafka_cluster.zookeeper_connect_string
+}
+
+output "bootstrap_brokers_tls" {
+  description = "TLS connection host:port pairs"
+  value       = aws_msk_cluster.kafka_cluster.bootstrap_brokers_tls
 }

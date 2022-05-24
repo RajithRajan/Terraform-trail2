@@ -61,3 +61,33 @@ variable "eks_node_disk_sz" {
   description = "EKS node disk size"
   type        = number
 }
+
+#############################################################
+## Kafka variables
+#############################################################
+variable "kafka_instance_type" {
+  description = "Aws EC2 instance type for Kafka Nodes"
+  type        = string
+}
+
+variable "kafka_storage_sz" {
+  description = "Kafka node disk size"
+  type        = number
+}
+#############################################################
+## OpenSearch variables
+#############################################################
+variable "opensearch_domain" {
+  description = "Domain name for the Opensearch"
+  type        = string
+}
+
+variable "opensearch_instance_type" {
+  description = "Aws EC2 instance type for opensearch Nodes"
+  type        = string
+}
+
+variable "opensearch_instance_count" {
+  description = "Count of opensearch instances"
+  type        = number
+}

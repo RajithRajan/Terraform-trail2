@@ -63,3 +63,17 @@ resource "aws_security_group" "eks_remote_access" {
     }
   )
 }
+
+resource "aws_security_group" "opensearch-sg" {
+  name        = "${local.name}-opensearch-${var.opensearch_domain}"
+  description = "Security group for open search"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    from_port = 443
+    to_port   = 443
+    protocol  = "tcp"
+
+    cidr_blocks = [var.vpc_cidr]
+  }
+}

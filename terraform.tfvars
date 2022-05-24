@@ -11,8 +11,17 @@ private_instance_count = 1
 eks_instance_type = "t2.micro"
 eks_cluster_ver   = "1.22"
 #eks_node_disk_sz  = 50
-eks_node_disk_sz  = 20
+eks_node_disk_sz = 20
 
 
 #Kafka variables
-#kafka_instance_type = "kafka.t3.small"
+#kafka_instance_type = "kafka.m5.large"
+kafka_instance_type = "kafka.t3.small"
+#kafka_storage_sz  = 1000
+kafka_storage_sz = 20
+
+#Opensearch variables
+opensearch_domain        = "my-opensearch"
+opensearch_instance_type = "t3.small.search"
+#opensearch_instance_type = "m4.large.search"
+opensearch_instance_count = 2

@@ -8,8 +8,8 @@ module "ec2_private" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [module.private-sg.security_group_id]
   #iam_instance_profile   = var.ec2_iam_role
-  iam_instance_profile   = aws_iam_instance_profile.ec2-ins-prof-ssm.id
-  subnet_id              = module.vpc.database_subnets["${count.index}"]
+  iam_instance_profile = aws_iam_instance_profile.ec2-ins-prof-ssm.id
+  subnet_id            = module.vpc.database_subnets["${count.index}"]
 
   #instance_count = var.private_instance_count
   user_data = file("${path.module}/user-data.sh")

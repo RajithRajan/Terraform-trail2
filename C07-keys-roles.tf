@@ -33,7 +33,7 @@ resource "aws_iam_instance_profile" "ec2-ins-prof-ssm" {
 }
 
 resource "aws_iam_role" "ec2-role-ssm" {
-  name                = "ec2-role-ssm"
+  name               = "ec2-role-ssm"
   path               = "/"
   assume_role_policy = <<EOL
 {
@@ -51,9 +51,18 @@ resource "aws_iam_role" "ec2-role-ssm" {
 EOL
 
   managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM",
-                         "arn:aws:iam::aws:policy/AmazonS3FullAccess",
-                         "arn:aws:iam::aws:policy/AmazonSSMFullAccess",
-                         "arn:aws:iam::aws:policy/AmazonS3OutpostsFullAccess"]
+    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+    "arn:aws:iam::aws:policy/AmazonSSMFullAccess",
+  "arn:aws:iam::aws:policy/AmazonS3OutpostsFullAccess"]
 
 
+}
+
+resource "aws_kms_key" "kafka_kms_key" {
+  description = "kafka kms key"
+}
+
+
+resource "aws_iam_service_linked_role" "open_search_role" {
+  aws_service_name = "opensearchservice.amazonaws.com"
 }

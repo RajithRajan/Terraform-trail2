@@ -1,5 +1,6 @@
 # Extracting data from aws
 
+# Extracting the AMI details of amazon linux 2
 data "aws_ami" "amzlinux" {
   most_recent = true
   owners      = ["amazon"]
@@ -17,3 +18,12 @@ data "aws_ami" "amzlinux" {
   }
 
 }
+
+# Extract the details of the availability zones in the region
+data "aws_availability_zones" "azs" {
+  state = "available"
+}
+
+data "aws_region" "current" {}
+
+data "aws_caller_identity" "current" {}

@@ -4,7 +4,7 @@ module "vpc" {
   name = "${local.name}-vpc"
   cidr = var.vpc_cidr
 
-  azs              = ["${var.aws_region}a", "${var.aws_region}b"]
+  azs              = [data.aws_availability_zones.azs.names[0], data.aws_availability_zones.azs.names[1]]
   private_subnets  = [cidrsubnet(var.vpc_cidr, 4, 0), cidrsubnet(var.vpc_cidr, 4, 7)]
   public_subnets   = [cidrsubnet(var.vpc_cidr, 4, 1), cidrsubnet(var.vpc_cidr, 4, 8)]
   database_subnets = [cidrsubnet(var.vpc_cidr, 4, 2), cidrsubnet(var.vpc_cidr, 4, 9)]
