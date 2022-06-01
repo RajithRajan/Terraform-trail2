@@ -25,3 +25,10 @@ opensearch_domain        = "my-opensearch"
 opensearch_instance_type = "t3.small.search"
 #opensearch_instance_type = "m4.large.search"
 opensearch_instance_count = 2
+
+#Database variables
+db_instance_type = "db.t3.micro"
+#db_instance_type     = "db.t4g.large"
+db_alloc_storage     = 20
+db_max_alloc_storage = 100
+db_multi_az_flag     = false

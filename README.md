@@ -42,6 +42,6 @@ eg
 - EC2 instance
 - ALB
 - EKS cluster with eks manage node group
-- Managed Kafka cluster (yet to add)
-- AWS Open search & Kibana dashboard (yet to add)
-- Managed Database (RDS or MongoDB Atlas) (yet to add)
+- Managed Kafka cluster
+- AWS Open search & Kibana dashboard
+- Managed Database (RDS PostgreSQL)

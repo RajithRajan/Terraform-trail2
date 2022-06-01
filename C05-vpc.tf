@@ -9,7 +9,7 @@ module "vpc" {
   public_subnets   = [cidrsubnet(var.vpc_cidr, 4, 1), cidrsubnet(var.vpc_cidr, 4, 8)]
   database_subnets = [cidrsubnet(var.vpc_cidr, 4, 2), cidrsubnet(var.vpc_cidr, 4, 9)]
 
-  create_database_subnet_group = false
+  create_database_subnet_group = true
 
   manage_default_network_acl = true
   default_network_acl_tags   = { Name = "${local.name}-dflt-acl" }

@@ -1,6 +1,6 @@
 # Local variables
 locals {
-  name = "bus-app1-rgn"
+  name = "abccorp-auth-rgn"
   common_tags = {
     Owner       = "Tech-Grp"
     Environment = "Dev"
@@ -90,4 +90,27 @@ variable "opensearch_instance_type" {
 variable "opensearch_instance_count" {
   description = "Count of opensearch instances"
   type        = number
+}
+#############################################################
+## Database variables
+#############################################################
+
+variable "db_instance_type" {
+  description = "Aws EC2 instance type for database"
+  type        = string
+}
+
+variable "db_alloc_storage" {
+  description = "Allocated storage for Database"
+  type        = number
+}
+
+variable "db_max_alloc_storage" {
+  description = "Max allocated storage for Database"
+  type        = number
+}
+
+variable "db_multi_az_flag" {
+  description = "Does Database need Multi AZ implementation"
+  type        = bool
 }
