@@ -66,3 +66,18 @@ module "db" {
     "Sensitive" = "low"
   }
 }
+
+resource "aws_ssm_parameter" "db_postgres_ssm_parameter_password" {
+  count = var.enabled_ssm_parameter_store ? 1 : 0
+
+  name  = "/database/password/master"
+  value = module.db.db_instance_password
+  type  = "SecureString"
+  tags = merge(
+    local.common_tags,
+    {
+      type = "SSM_PARAM_RDS_PWD"
+    }
+  )
+  overwrite = true
+}

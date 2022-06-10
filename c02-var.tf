@@ -114,3 +114,9 @@ variable "db_multi_az_flag" {
   description = "Does Database need Multi AZ implementation"
   type        = bool
 }
+
+variable "enabled_ssm_parameter_store" {
+  type        = bool
+  default     = true
+  description = "Save RDS credentials to SSM Parameter Store."
+}
