@@ -1,9 +1,15 @@
 # Local .terraform directories
 **/.terraform/*
 
+#Local test directories
+**/test/*
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+# .pem files SSH key-pair
+*.pem
 
 # Crash log files
 crash.log
