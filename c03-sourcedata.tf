@@ -19,6 +19,25 @@ data "aws_ami" "amzlinux" {
 
 }
 
+# Extracting the AMI details of windows
+data "aws_ami" "winami" {
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["Windows_Server-2022-English-Full-Base-2022.05.25"]
+  }
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+}
+
 # Extract the details of the availability zones in the region
 data "aws_availability_zones" "azs" {
   state = "available"
