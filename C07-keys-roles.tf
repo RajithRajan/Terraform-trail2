@@ -19,12 +19,21 @@ resource "aws_key_pair" "this" {
   key_name_prefix = local.name
   public_key      = tls_private_key.this.public_key_openssh
 
+  provisioner "local-exec" { # Create a "myKey.pem" to your computer!!
+    command = "echo '${tls_private_key.this.private_key_pem}' > ./myKey.pem"
+  }
+
   tags = merge(
     local.common_tags,
     {
       type = "aws-key-pair"
     }
   )
+}
+
+resource "local_file" "ssh_key" {
+  filename = "${aws_key_pair.this.key_name}.pem"
+  content  = tls_private_key.this.private_key_pem
 }
 
 resource "aws_iam_instance_profile" "ec2-ins-prof-ssm" {
