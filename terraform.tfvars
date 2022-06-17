@@ -1,3 +1,8 @@
+# Common variable
+env = "dev"
+# Region variable
+aws_region = "ap-south-1"
+
 # VPC Variables
 vpc_cidr = "10.0.0.0/16"
 
@@ -18,13 +23,15 @@ eks_node_disk_sz = 20
 #kafka_instance_type = "kafka.m5.large"
 kafka_instance_type = "kafka.t3.small"
 #kafka_storage_sz  = 1000
-kafka_storage_sz = 20
+kafka_storage_sz     = 20
+create_kafka_cluster = true
 
 #Opensearch variables
 opensearch_domain        = "my-opensearch"
 opensearch_instance_type = "t3.small.search"
 #opensearch_instance_type = "m4.large.search"
 opensearch_instance_count = 2
+create_opensearch_domain  = true
 
 #Database variables
 db_instance_type = "db.t3.micro"
@@ -32,3 +39,4 @@ db_instance_type = "db.t3.micro"
 db_alloc_storage     = 20
 db_max_alloc_storage = 100
 db_multi_az_flag     = false
+db_initial_db_name   = "quarkus_test"

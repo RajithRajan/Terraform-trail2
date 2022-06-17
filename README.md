@@ -22,7 +22,7 @@
 
 eg
 
-`aws eks --region ap-south-1 update-kubeconfig --name bus-app1-rgn-eks-main`
+`aws eks --region ap-south-1 update-kubeconfig --name abccorp-auth-rgn-eks-main`
 
 - Kubeconfig would be downloaded so its ready to run kubectl against EKS    
 

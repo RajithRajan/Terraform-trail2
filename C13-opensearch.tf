@@ -5,6 +5,7 @@
 resource "aws_opensearch_domain" "opensearch" {
   domain_name    = var.opensearch_domain
   engine_version = "OpenSearch_1.0"
+  count          = var.create_opensearch_domain ? 1 : 0
 
   cluster_config {
     instance_type          = var.opensearch_instance_type

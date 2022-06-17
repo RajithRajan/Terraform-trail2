@@ -19,10 +19,6 @@ resource "aws_key_pair" "this" {
   key_name_prefix = local.name
   public_key      = tls_private_key.this.public_key_openssh
 
-  provisioner "local-exec" { # Create a "myKey.pem" to your computer!!
-    command = "echo '${tls_private_key.this.private_key_pem}' > ./myKey.pem"
-  }
-
   tags = merge(
     local.common_tags,
     {

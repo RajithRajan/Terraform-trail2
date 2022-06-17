@@ -6,6 +6,7 @@ resource "aws_msk_cluster" "kafka_cluster" {
   cluster_name           = "${local.name}-kafka-cluster"
   kafka_version          = "2.8.1"
   number_of_broker_nodes = 2
+  count                  = var.create_kafka_cluster ? 1 : 0
 
   broker_node_group_info {
     instance_type   = var.kafka_instance_type

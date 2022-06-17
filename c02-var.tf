@@ -3,7 +3,7 @@ locals {
   name = "abccorp-auth-rgn"
   common_tags = {
     Owner       = "Tech-Grp"
-    Environment = "Dev"
+    Environment = var.env
     Automation  = "Yes"
   }
 }
@@ -14,6 +14,11 @@ variable "aws_region" {
   description = "Aws region for execution of the terraform script"
   type        = string
   default     = "ap-south-1"
+}
+
+variable "env" {
+  description = "Environment which needs to be provisioned"
+  type        = string
 }
 
 #############################################################
@@ -74,6 +79,11 @@ variable "kafka_storage_sz" {
   description = "Kafka node disk size"
   type        = number
 }
+
+variable "create_kafka_cluster" {
+  type        = bool
+  description = "Create kafka cluster"
+}
 #############################################################
 ## OpenSearch variables
 #############################################################
@@ -90,6 +100,11 @@ variable "opensearch_instance_type" {
 variable "opensearch_instance_count" {
   description = "Count of opensearch instances"
   type        = number
+}
+
+variable "create_opensearch_domain" {
+  type        = bool
+  description = "Create Opensearch domain"
 }
 #############################################################
 ## Database variables
@@ -119,4 +134,10 @@ variable "enabled_ssm_parameter_store" {
   type        = bool
   default     = true
   description = "Save RDS credentials to SSM Parameter Store."
+}
+
+variable "db_initial_db_name" {
+  type        = string
+  default     = "demodb"
+  description = "Provide the name of Database which needs to be created initially"
 }

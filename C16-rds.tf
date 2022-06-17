@@ -18,7 +18,7 @@ module "db" {
   allocated_storage     = var.db_alloc_storage
   max_allocated_storage = var.db_max_alloc_storage
 
-  db_name  = "Auth_DB"
+  db_name  = var.db_initial_db_name
   username = "admin_postgresql"
   port     = 5432
 
@@ -70,13 +70,28 @@ module "db" {
 resource "aws_ssm_parameter" "db_postgres_ssm_parameter_password" {
   count = var.enabled_ssm_parameter_store ? 1 : 0
 
-  name  = "/database/password/master"
+  name  = "/database/${var.env}/password/master"
   value = module.db.db_instance_password
   type  = "SecureString"
   tags = merge(
     local.common_tags,
     {
       type = "SSM_PARAM_RDS_PWD"
+    }
+  )
+  overwrite = true
+}
+
+resource "aws_ssm_parameter" "db_postgres_ssm_parameter_endpoint" {
+  count = var.enabled_ssm_parameter_store ? 1 : 0
+
+  name  = "/database/${var.env}/endpoint"
+  value = module.db.db_instance_endpoint
+  type  = "String"
+  tags = merge(
+    local.common_tags,
+    {
+      type = "SSM_PARAM_RDS_endpoint"
     }
   )
   overwrite = true
