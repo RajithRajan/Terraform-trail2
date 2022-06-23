@@ -67,6 +67,11 @@ variable "eks_node_disk_sz" {
   type        = number
 }
 
+variable "create_eks_cluster" {
+  type        = bool
+  description = "Create eks cluster"
+}
+
 #############################################################
 ## Kafka variables
 #############################################################
@@ -140,4 +145,51 @@ variable "db_initial_db_name" {
   type        = string
   default     = "demodb"
   description = "Provide the name of Database which needs to be created initially"
+}
+
+variable "create_rds_db" {
+  type        = bool
+  description = "Create RDS database"
+}
+
+#############################################################
+## MongoDB Atlas
+#############################################################
+variable "mongodb_atlas_public_key" {
+  #environment variable TF_VAR_mongodb_atlas_public_key
+  type        = string
+  description = "The public API key for MongoDB Atlas"
+}
+
+variable "mongodb_atlas_private_key" {
+  #environment variable TF_VAR_mongodb_atlas_private_key
+  type        = string
+  description = "The private API key for MongoDB Atlas"
+}
+
+variable "mongodb_atlas_dbuser" {
+  description = "The db user for Atlas"
+  type        = string
+}
+
+variable "mongodb_atlas_dbpassword" {
+  description = "The db user passwd for Atlas"
+  type        = string
+}
+
+variable "mongodb_atlas_orgid" {
+  #environment variable TF_VAR_mongodb_atlas_orgid
+  description = "Atlas Org ID"
+  type        = string
+}
+
+variable "mongodb_atlas_vpc_cidr" {
+  description = "Atlas CIDR"
+  type        = string
+  default     = "192.168.232.0/21"
+}
+
+variable "mongodb_atlas_instance_type" {
+  description = "Aws EC2 instance type for mongodb atlas"
+  type        = string
 }

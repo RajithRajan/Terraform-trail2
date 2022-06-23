@@ -3,8 +3,9 @@
 ################################################################################
 
 module "db" {
-  source  = "terraform-aws-modules/rds/aws"
-  version = "4.4.0"
+  source             = "terraform-aws-modules/rds/aws"
+  version            = "4.4.0"
+  create_db_instance = var.create_rds_db
 
   identifier = local.name
 
