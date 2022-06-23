@@ -1,7 +1,9 @@
 module "eks" {
-  source                    = "terraform-aws-modules/eks/aws"
-  cluster_name              = "${local.name}-eks-main"
-  cluster_version           = var.eks_cluster_ver
+  source          = "terraform-aws-modules/eks/aws"
+  cluster_name    = "${local.name}-eks-main"
+  cluster_version = var.eks_cluster_ver
+  create          = var.create_eks_cluster
+
   vpc_id                    = module.vpc.vpc_id
   subnet_ids                = module.vpc.private_subnets
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
@@ -64,7 +66,8 @@ module "eks" {
     # and then turn this off after the cluster/node group is created. Without this initial policy,
     # the VPC CNI fails to assign IPs and nodes cannot join the cluster
     # See https://github.com/aws/containers-roadmap/issues/1666 for more context
-    iam_role_attach_cni_policy = true
+    iam_role_attach_cni_policy      = true
+    launch_template_use_name_prefix = "${local.name}-eks-node-"
   }
 
   eks_managed_node_groups = {
@@ -91,9 +94,11 @@ module "eks" {
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_id
+  name  = module.eks.cluster_id
+  count = var.create_eks_cluster ? 1 : 0
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_id
+  name  = module.eks.cluster_id
+  count = var.create_eks_cluster ? 1 : 0
 }
