@@ -40,8 +40,9 @@ eg
 - Security group for EKS nodes for remote access
 - Natgateway
 - EC2 instance
-- ALB
+- ALB (Commented)
 - EKS cluster with eks manage node group
 - Managed Kafka cluster
 - AWS Open search & Kibana dashboard
 - Managed Database (RDS PostgreSQL)
+- MongoDB atlas database and VPC peering
