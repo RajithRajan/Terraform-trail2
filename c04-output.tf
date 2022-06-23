@@ -441,3 +441,17 @@ output "db_default_instance_port" {
   description = "The database port"
   value       = module.db.db_instance_port
 }
+
+####################################################
+### MongoDB atlas Output
+####################################################
+
+output "mongodb_atlas_uri" {
+  description = "The MongoDB atlas URI"
+  value       = mongodbatlas_cluster.cluster-atlas.mongo_uri
+}
+
+output "mongodb_atlas_connection_strings" {
+  description = "The database port"
+  value       = mongodbatlas_cluster.cluster-atlas.connection_strings
+}
